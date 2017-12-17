@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">SimpleCalculator</string>
-    <string name="title">계산기 (strings.xml)</string>
-    <string name="plus">더하기</string>
-    <string name="minus">빼기</string>
-    <string name="mul">곱셈</string>
-    <string name="div">나누기</string>
-    <string name="rem">나머지</string>
-</resources>
