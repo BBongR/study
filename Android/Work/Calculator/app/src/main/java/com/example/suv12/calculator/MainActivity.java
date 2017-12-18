@@ -11,9 +11,9 @@ public class MainActivity extends AppCompatActivity {
     TextView textView;
     Calc c = new Calc();
     String rs = "";
-    String text = "";
-    String text2 = "";
-    Boolean flag = true;
+    String text = ""; // textView 에 식을 보여주는 변수
+    String text2 = ""; // 결과값 변수
+    Boolean flag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +62,10 @@ public class MainActivity extends AppCompatActivity {
         buttonEqual.setOnClickListener(b);
         buttonAc.setOnClickListener(b);
         buttonC.setOnClickListener(b);
+
+        // flag초기화
+        flag = false;
+
     }
 
     public class BtnInner implements Button.OnClickListener {
@@ -69,8 +73,11 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
 
+
             switch (view.getId()) {
                 case R.id.buttonEqual:
+
+                    if (flag == false) {
 
                         if (text.length() == 0) {
                             break;
@@ -96,8 +103,12 @@ public class MainActivity extends AppCompatActivity {
 
                         text = text + "=" + rs;
                         textView.setText(text);
+                        text = ""; // = 두번 클릭 방지
+                        text2 = "";
 
-                        break;
+                        flag = true;
+                    }
+                    break;
 
                 case R.id.button0:
                     text += "0";
@@ -150,33 +161,69 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case R.id.buttonPlus:
+                    if (text == "") {
+                        break;
+                    }
+
+                    if (four()) break;
+
                     text += "＋";
                     textView.setText(text);
                     break;
 
                 case R.id.buttonMinus:
+                    if (text == "") {
+                        break;
+                    }
+
+                    if (four()) break;
+
                     text += "－";
                     textView.setText(text);
                     break;
 
                 case R.id.buttonMul:
+                    if (text == "") {
+                        break;
+                    }
+
+                    if (four()) break;
+
                     text += "×";
                     textView.setText(text);
                     break;
 
                 case R.id.buttonDiv:
+                    if (text == "") {
+                        break;
+                    }
+
+                    if (four()) break;
+
                     text += "÷";
                     textView.setText(text);
                     break;
 
                 case R.id.buttonPoint:
-                    text += ".";
+                    if (text.length() == 0) {
+                        text2 += "0.";
+                        text += text2;
+                        textView.setText(text);
+                        text2 = "";
+                        break;
+                    } else {
+                        if (four()) {
+                            text += ".";
+                        }
+                    }
+
                     textView.setText(text);
                     break;
 
                 case R.id.buttonAc:
                     text = "";
                     textView.setText(text);
+                    flag = false;
                     break;
 
                 case R.id.buttonC:
@@ -187,6 +234,19 @@ public class MainActivity extends AppCompatActivity {
                     textView.setText(text);
                     break;
             }
+
+
         }
+    }
+
+    private boolean four() {
+        if (((text.charAt(text.length() - 1) == '＋') ||
+                (text.charAt(text.length() - 1) == '－') ||
+                (text.charAt(text.length() - 1) == '×') ||
+                (text.charAt(text.length() - 1) == '÷')
+        )) {
+            return true;
+        }
+        return false;
     }
 }
