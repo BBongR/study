@@ -77,37 +77,33 @@ public class MainActivity extends AppCompatActivity {
             switch (view.getId()) {
                 case R.id.buttonEqual:
 
-                    if (flag == false) {
-
-                        if (text.length() == 0) {
-                            break;
-                        }
-
-                        if (!((text.contains("＋")) || (text.contains("－")) || (text.contains("×")) || (text.contains("÷")))) {
-                            break;
-                        }
-
-                        text2 = text;
-                        text2 = text2.replace("×", "*");
-                        text2 = text2.replace("÷", "/");
-                        text2 = text2.replace("＋", "+");
-                        text2 = text2.replace("－", "-");
-
-                        // 중위 표기법을 후위 표기법으로 바꾸기
-                        String postfixExp = c.postfix(text2);
-                        System.out.println("후위 표기법 : " + postfixExp);
-
-                        // 후위 표기법을 이용하여 수식 계산
-                        Double result = c.result(postfixExp);
-                        rs = String.valueOf(result);
-
-                        text = text + "=" + rs;
-                        textView.setText(text);
-                        text = ""; // = 두번 클릭 방지
-                        text2 = "";
-
-                        flag = true;
+                    if (text.length() == 0) {
+                        break;
                     }
+
+                    if (!((text.contains("＋")) || (text.contains("－")) || (text.contains("×")) || (text.contains("÷")))) {
+                        break;
+                    }
+
+                    text2 = text;
+                    text2 = text2.replace("×", "*");
+                    text2 = text2.replace("÷", "/");
+                    text2 = text2.replace("＋", "+");
+                    text2 = text2.replace("－", "-");
+
+                    // 중위 표기법을 후위 표기법으로 바꾸기
+                    String postfixExp = c.postfix(text2);
+                    System.out.println("후위 표기법 : " + postfixExp);
+
+                    // 후위 표기법을 이용하여 수식 계산
+                    Double result = c.result(postfixExp);
+                    rs = String.valueOf(result);
+
+                    text = text + "=" + rs;
+                    textView.setText(text);
+                    text = ""; // = 두번 클릭 방지
+                    text2 = "";
+
                     break;
 
                 case R.id.button0:
@@ -240,11 +236,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean four() {
-        if (((text.charAt(text.length() - 1) == '＋') ||
+        if (    (text.charAt(text.length() - 1) == '＋') ||
                 (text.charAt(text.length() - 1) == '－') ||
                 (text.charAt(text.length() - 1) == '×') ||
                 (text.charAt(text.length() - 1) == '÷')
-        )) {
+                ) {
             return true;
         }
         return false;

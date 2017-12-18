@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_snow"
+        android:icon="@drawable/ic_ac_unit_black_24dp"
+        android:title="snow" />
+
+    <item
+        android:id="@+id/navigation_android"
+        android:icon="@drawable/ic_android_black_24dp"
+        android:title="android" />
+
+    <item
+        android:id="@+id/navigation_wc"
+        android:icon="@drawable/ic_wc_black_24dp"
+        android:title="wc" />
+
+</menu>
