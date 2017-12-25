@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
 
                 //데이터 담을 그릇 생성
-                ArrayList<String> names = new ArrayList<String>();
+                ArrayList<String> names = new ArrayList<>();
                 names.add("김진수");
                 names.add("황수연");
                 names.add("한지민");
