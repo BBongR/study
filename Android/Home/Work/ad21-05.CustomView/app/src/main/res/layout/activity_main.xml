@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.suv12.customview.MainActivity">
+
+    <com.example.suv12.customview.PersonView
+        android:id="@+id/view_person"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:my_age="@string/person_age"
+        app:my_name="@string/person_name"
+        app:my_photo="@drawable/han3" />
+
+    <ImageView
+        android:id="@+id/img_select"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+</LinearLayout>
