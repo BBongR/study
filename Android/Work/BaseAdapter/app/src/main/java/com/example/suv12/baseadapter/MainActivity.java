@@ -2,6 +2,7 @@ package com.example.suv12.baseadapter;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.GridView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         // 아답터 만들기 & 데이터 연결
         MyAdapter adapter = new MyAdapter(MainActivity.this, myData);
 
-        ListView listV = findViewById(R.id.listV);
-        listV.setAdapter(adapter);
+        ListView listV = findViewById(R.id.listV);                            GridView gridV = findViewById(R.id.gridV);
+        listV.setAdapter(adapter);                                            gridV.setAdapter(adapter);
     }
 }
