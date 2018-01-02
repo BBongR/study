@@ -15,21 +15,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="이름" />
+            android:hint="이름"
+            android:singleLine="true"
+            android:maxWidth="100px"/>
 
         <EditText
             android:id="@+id/edt_Num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="학번" />
+            android:hint="학번"
+            android:singleLine="true"
+            android:maxWidth="100px"/>
 
         <EditText
             android:id="@+id/edt_Dept"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="학과" />
+            android:hint="학과"
+            android:singleLine="true"
+            android:maxWidth="100px"/>
 
         <Button
             android:id="@+id/btn_Add"
@@ -55,7 +61,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="아이템" />
+            android:hint="아이템"
+            android:singleLine="true"
+            android:maxWidth="100px"/>
 
         <Button
             android:id="@+id/btn_Search"
@@ -75,28 +83,28 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:text="정렬" />
-
+    
         <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:orientation="horizontal">
-
+        
             <RadioButton
                 android:id="@+id/radio_Asce"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="오름차순" />
-
+                android:text="오름차순"/>
+        
             <RadioButton
                 android:id="@+id/radio_Desc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="내림차순" />
-
+                android:text="내림차순"/>
+    
         </RadioGroup>
 
         <Button
