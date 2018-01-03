@@ -18,6 +18,8 @@ import java.util.ArrayList;
 // 1. extends ArrayAdapter<PersonData> 상속받기
 public class StudentAdapter extends ArrayAdapter<ModelStudent> {
 
+    int uniquekey = 1;
+
     // 3-1. ArrayList<객체> 선언
     ArrayList<ModelStudent> items;
 
@@ -84,6 +86,8 @@ public class StudentAdapter extends ArrayAdapter<ModelStudent> {
         student.setName(name);
         student.setNumber(number);
         student.setDepartment(department);
+        student.setUniquekey(uniquekey);
+        uniquekey++;
 
         items.add(student);
     }

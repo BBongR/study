@@ -14,6 +14,15 @@ public class ModelStudent implements Comparable<ModelStudent> {
     private String name;
     private String number;
     private String department;
+    private int uniquekey;
+
+    public int getUniquekey() {
+        return uniquekey;
+    }
+
+    public void setUniquekey(int uniquekey) {
+        this.uniquekey = uniquekey;
+    }
 
     public String getName() {
         return name;
@@ -45,16 +54,18 @@ public class ModelStudent implements Comparable<ModelStudent> {
                 "name='" + name + '\'' +
                 ", number='" + number + '\'' +
                 ", department='" + department + '\'' +
+                ", uniquekey=" + uniquekey +
                 '}';
     }
 
     public ModelStudent() {
     }
 
-    public ModelStudent(String name, String number, String department) {
+    public ModelStudent(String name, String number, String department, int uniquekey) {
         this.name = name;
         this.number = number;
         this.department = department;
+        this.uniquekey = uniquekey;
     }
 
     @Override
@@ -63,7 +74,7 @@ public class ModelStudent implements Comparable<ModelStudent> {
     }
 
     public static class NameCompare implements Comparator<ModelStudent> {
-        private int mode  = 1;
+        private int mode = 1;
 
         public NameCompare() {
             super();
@@ -72,17 +83,17 @@ public class ModelStudent implements Comparable<ModelStudent> {
 
         public NameCompare(boolean desc) {
             super();
-            if( desc == true) this.mode = -1;
+            if (desc == true) this.mode = -1;
         }
 
         @Override
         public int compare(ModelStudent o1, ModelStudent o2) {
-            return o1.getName().compareTo( o2.getName() ) * mode;
+            return o1.getName().compareTo(o2.getName()) * mode;
         }
     }
 
     public static class NumberCompare implements Comparator<ModelStudent> {
-        private int mode  = 1;
+        private int mode = 1;
 
         public NumberCompare() {
             super();
@@ -91,17 +102,17 @@ public class ModelStudent implements Comparable<ModelStudent> {
 
         public NumberCompare(boolean desc) {
             super();
-            if( desc == true) this.mode = -1;
+            if (desc == true) this.mode = -1;
         }
 
         @Override
         public int compare(ModelStudent o1, ModelStudent o2) {
-            return o1.getNumber().compareTo( o2.getNumber() ) * mode;
+            return o1.getNumber().compareTo(o2.getNumber()) * mode;
         }
     }
 
     public static class DeptCompare implements Comparator<ModelStudent> {
-        private int mode  = 1;
+        private int mode = 1;
 
         public DeptCompare() {
             super();
@@ -110,12 +121,12 @@ public class ModelStudent implements Comparable<ModelStudent> {
 
         public DeptCompare(boolean desc) {
             super();
-            if( desc == true) this.mode = -1;
+            if (desc == true) this.mode = -1;
         }
 
         @Override
         public int compare(ModelStudent o1, ModelStudent o2) {
-            return o1.getDepartment().compareTo( o2.getDepartment() ) * mode;
+            return o1.getDepartment().compareTo(o2.getDepartment()) * mode;
         }
     }
 }
