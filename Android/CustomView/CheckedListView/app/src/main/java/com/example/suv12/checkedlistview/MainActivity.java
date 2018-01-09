@@ -2,7 +2,12 @@ package com.example.suv12.checkedlistview;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
     // 9-1.
     private AdapterPerson adapter = null;
 
+    // 11-1
+    private EditText edit_inputt;
+    private Button   btn_search;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +55,23 @@ public class MainActivity extends AppCompatActivity {
 
         // 10. listView 와 adapter 연결
         listView.setAdapter(adapter);
+
+        // 11.
+        View headerView = LayoutInflater.from( MainActivity.this ).inflate( R.layout.header_list_item,null );
+        edit_inputt = headerView.findViewById( R.id.edit_input );
+        btn_search  = headerView.findViewById( R.id.btn_search );
+        listView.addHeaderView( headerView );
+
+        // 12
+        btn_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String text = edit_inputt.getText().toString();
+                if( !( text.isEmpty() ) ){
+                    Toast.makeText( MainActivity.this, text, Toast.LENGTH_SHORT ).show();
+                }
+            }
+        });
     }
 
     // 8-4.
@@ -56,10 +82,10 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 20; i++) {
             person = new ModelPerson();
                                                              // 8-5 필드에 이미지 배열 만들기
-            person.setImage_photo ( getResources().getDrawable( images[i % images.length], null ) );
-            person.setText_name   ( "name " + i );
-            person.setText_age    ( i + "" );
-            person.setImage_check ( false );
+            person.setPhoto ( getResources().getDrawable( images[i % images.length], null ) );
+            person.setName  ( "name " + i );
+            person.setAge   ( i + ""      );
+            person.setCheck ( false       );
             items.add(person);
         }
 

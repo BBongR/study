@@ -1,14 +1,16 @@
 package com.example.suv12.checkedlistview;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -36,15 +38,56 @@ public class AdapterPerson extends ArrayAdapter<ModelPerson> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-        // 4.
+//        // 4.
+//        ViewHolder holder;
+//
+//        // 5.
+//        View rowView = convertView;
+//
+//        if (rowView == null) {
+//
+//            rowView = new ViewPerson( context,null,0 );
+//
+//            holder = new ViewHolder();
+//
+//            holder.image_photo = rowView.findViewById( R.id.image_photo );
+//            holder.text_name   = rowView.findViewById( R.id.text_name   );
+//            holder.text_age    = rowView.findViewById( R.id.text_age    );
+//            holder.image_check = rowView.findViewById( R.id.image_check );
+//
+//            rowView.setTag(holder);
+//
+//        } else {
+//
+//            holder = (ViewHolder) rowView.getTag();
+//
+//        }
+//
+//        // 6.
+//        ModelPerson person = lists.get(position);
+//
+//        holder.image_photo.setImageDrawable( person.getImage_photo() );
+//        holder.text_name  .setText         ( person.getText_name()   );
+//        holder.text_age   .setText         ( person.getText_age()    );
+//        holder.image_check.setChecked      ( person.getImage_check() );
+//
+//        return rowView; // 7. 리스트뷰 추가 등 작업하러 MainActivity 로 이동 ...
+
+        return getViewWidjet( position, convertView, parent );
+    }
+
+    // d-3
+    public View getViewWidjet(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+
+        // e.
         ViewHolder holder;
 
-        // 5.
+        // f.
         View rowView = convertView;
 
-        if (rowView == null) {
+        if ( rowView == null ) {
 
-            rowView = LayoutInflater.from( this.context ).inflate( R.layout.view_person, null, false );
+            rowView = new ViewPerson( context,null,0 );
 
             holder = new ViewHolder();
 
@@ -52,24 +95,49 @@ public class AdapterPerson extends ArrayAdapter<ModelPerson> {
             holder.text_name   = rowView.findViewById( R.id.text_name   );
             holder.text_age    = rowView.findViewById( R.id.text_age    );
             holder.image_check = rowView.findViewById( R.id.image_check );
+            holder.rLayout     = rowView.findViewById( R.id.rLayout     );
 
-            rowView.setTag(holder);
+            rowView.setTag( holder );
 
         } else {
 
-            holder = (ViewHolder) rowView.getTag();
+            holder = ( ViewHolder ) rowView.getTag();
 
         }
 
-        // 6.
-        ModelPerson person = lists.get(position);
+        // g. 값 설정 후 --> 체크박스 클릭 이벤트 달러 ViewPerson 으로 이동
+        ModelPerson person = lists.get( position );
 
-        holder.image_photo.setImageDrawable( person.getImage_photo() );
-        holder.text_name  .setText         ( person.getText_name()   );
-        holder.text_age   .setText         ( person.getText_age()    );
-        holder.image_check.setChecked      ( person.getImage_check() );
+        holder.image_photo.setImageDrawable( person.getPhoto() );
+        holder.text_name  .setText         ( person.getName()  );
+        holder.text_age   .setText         ( person.getAge()   );
+        holder.image_check.setChecked      ( person.isCheck()  );
 
-        return rowView; // 7. 리스트뷰 추가 등 작업하러 MainActivity 로 이동 ...
+        // i.
+        if( lists.get( position ).isCheck() ) {
+            holder.rLayout.setBackgroundColor( Color.MAGENTA );
+        }
+        else {
+            holder.rLayout.setBackgroundColor( Color.TRANSPARENT );
+        }
+
+        holder.image_check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean newState = !lists.get( position ).isCheck();
+                lists.get( position ).setCheck( newState );
+                if( newState ) {
+                    ((View)v.getParent()).setBackgroundColor( Color.MAGENTA );
+                }
+                else {
+                    ((View)v.getParent()).setBackgroundColor( Color.TRANSPARENT );
+                }
+
+                Log.d( "getViewWidget", getItem( position ).toString() );
+            }
+        });
+
+        return rowView;
     }
 
     // 3. ViewHolder class 만들기
@@ -78,5 +146,6 @@ public class AdapterPerson extends ArrayAdapter<ModelPerson> {
         TextView  text_name;
         TextView  text_age;
         CheckBox  image_check;
+        RelativeLayout rLayout;
     }
 }

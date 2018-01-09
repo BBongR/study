@@ -8,60 +8,71 @@ import android.graphics.drawable.Drawable;
 
 public class ModelPerson {
 
-    private Drawable image_photo = null;
-    private String   text_name   = "";
-    private String   text_age    = "";
-    private Boolean  image_check = null;
+    private int      position    = 0;
+    private Drawable photo = null;
+    private String   name   = "";
+    private String   age    = "";
+    private boolean  check = false;
 
     public ModelPerson() {
     }
 
-    public ModelPerson(Drawable image_photo, String text_name, String text_age, Boolean image_check) {
-        this.image_photo = image_photo;
-        this.text_name   = text_name;
-        this.text_age    = text_age;
-        this.image_check = image_check;
+    public ModelPerson(int position, Drawable photo, String name, String age, boolean check) {
+        this.position = position;
+        this.photo = photo;
+        this.name = name;
+        this.age = age;
+        this.check = check;
     }
 
-    public Drawable getImage_photo() {
-        return image_photo;
+    public int getPosition() {
+        return position;
     }
 
-    public void setImage_photo(Drawable image_photo) {
-        this.image_photo = image_photo;
+    public void setPosition(int position) {
+        this.position = position;
     }
 
-    public String getText_name() {
-        return text_name;
+    public Drawable getPhoto() {
+        return photo;
     }
 
-    public void setText_name(String text_name) {
-        this.text_name = text_name;
+    public void setPhoto(Drawable photo) {
+        this.photo = photo;
     }
 
-    public String getText_age() {
-        return text_age;
+    public String getName() {
+        return name;
     }
 
-    public void setText_age(String text_age) {
-        this.text_age = text_age;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Boolean getImage_check() {
-        return image_check;
+    public String getAge() {
+        return age;
     }
 
-    public void setImage_check(Boolean image_check) {
-        this.image_check = image_check;
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public boolean isCheck() {
+        return check;
+    }
+
+    public void setCheck(boolean check) {
+        this.check = check;
     }
 
     @Override
     public String toString() {
         return "ModelPerson{" +
-                "image_photo=" + image_photo +
-                ", text_name='" + text_name + '\'' +
-                ", text_age='" + text_age + '\'' +
-                ", image_check=" + image_check +
+                "position=" + position +
+                ", photo=" + photo +
+                ", name='" + name + '\'' +
+                ", age='" + age + '\'' +
+                ", check=" + check +
                 '}';
     }
 }
